@@ -1,0 +1,14 @@
+{
+  "name": "e2e-test-task",
+  "version": "1.0.0",
+  "description": "Sendsay test task",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run --browser chrome"
+  },
+  "devDependencies": {
+    "cypress": "^3.8.2"
+  }
+}
