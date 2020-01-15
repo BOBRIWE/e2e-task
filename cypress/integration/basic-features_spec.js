@@ -27,30 +27,29 @@ describe('Basic features', () => {
             .should('include', '/campaigns/issues/draft-');
 
 
-        cy.contains('Add recipients').click();
-        cy.contains('Select list or segment').click();
+        cy.get(':nth-child(1) > .WizardStep > .WizardStep-wrapper > .WizardStep-header > .WizardStep-panel > .Button > .Button-wrapper').click(); // Add recipients button
+        cy.get('.SelectButton > .Button > .Button-wrapper').click(); // Select list or segment
         cy.get('[title="Доступные для рассылки email"]').click();
         cy.wait(1000);
-        cy.contains('Save').click();
+        cy.get('.WizardStepSubmitAndCloseButtons-submitButton > .Button > .Button-wrapper').click(); // Save
         cy.wait(500);
 
-        cy.contains('Edit').click();
+        cy.get(':nth-child(2) > .WizardStep > .WizardStep-wrapper > .WizardStep-header > .WizardStep-panel > .Button > .Button-wrapper').click(); // Edit
         cy.get('.Select-target > .TextArea > .TextArea-input').type('test name'); // From name
         // Auto selecting behaviour for email?
         // cy.contains('Select email').click();
         // cy.get('[title="kmbobrice@gmail.com"]').click();
         cy.get('[name=subject]').type('test subject');
         cy.wait(1000);
-        cy.contains('Save').click();
+        cy.get('.WizardStepSubmitAndCloseButtons-submitButton > .Button > .Button-wrapper').click(); // Save
         cy.wait(500);
 
-        cy.contains('Design email').click();
-        cy.get('.GalleryCards-content > :nth-child(1) > .GalleryCard-preview > .GalleryCard-previewContent > .GalleryCard-shadow').click();
-        cy.contains('Save and close').click();
+        cy.get(':nth-child(3) > .WizardStep > .WizardStep-wrapper > .WizardStep-header > .WizardStep-panel > .Button > .Button-wrapper').click(); // Design email
+        cy.get('.GalleryCards-content > :nth-child(1) > .GalleryCard-preview > .GalleryCard-previewContent > .GalleryCard-shadow').click(); // HTML template
+        cy.get(':nth-child(5) > .ui-button').click(); // Save and close
 
 
         cy.get('.section-header__item > .ControlGroup > :nth-child(1) > .Button > .Button-wrapper').click(); // Main send
-        cy.contains('Confirm the action');
         cy.get('.dialog__action-button > .Button > .Button-wrapper').click(); // Send
 
         cy.url()
